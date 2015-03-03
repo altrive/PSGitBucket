@@ -44,11 +44,13 @@ $xml = [xml]@'
     </handlers>
     <httpPlatform processPath="{{PROCESS_PATH}}" arguments="{{ARGUMENTS}}">
       <environmentVariables>
+        <environmentVariable name="GITBUCKET_HOME" value="{{GITBUCKET_HOME}}" />
       </environmentVariables>
-    </httpPlatform>
+  </httpPlatform>
   </system.webServer>
 </configuration>
-'@
+'@.Replace("{{GITBUCKET_HOME}}", (Join-Path $env:Home ".gitbucket"))
+
 $xml.configuration."system.webServer".httpPlatform.processPath = "$env:JAVA_HOME\bin\java.exe"
 $xml.configuration."system.webServer".httpPlatform.arguments   = [Environment]::ExpandEnvironmentVariables("$env:AZURE_JETTY9_CMDLINE")
 
