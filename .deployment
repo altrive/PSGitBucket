@@ -1,5 +1,5 @@
 [config]
-command = powershell.exe -ExecutionPolicy RemoteSigned -File "Startup\OnDeploy.ps1"
+command = powershell.exe -ExecutionPolicy RemoteSigned -Command ".\Startup\OnDeploy.ps1"
 POST_DEPLOYMENT_ACTIONS_DIR = D:\home\site\repository\Startup\PostDeployActions
 
 [CommentSection]
