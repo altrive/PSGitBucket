@@ -11,7 +11,7 @@ $host.UI.WriteLine('$env:DEPLOYMENT_TARGET: {0}' -f $env:DEPLOYMENT_TARGET)
 
 #a temporary folder that can be used to store artifacts for the current build. This folder is deleted after the cmd is run.
 $host.UI.WriteLine('$env:DEPLOYMENT_TEMP: {0}' -f $env:DEPLOYMENT_TEMP)
-$host.UI.WriteLine('$env:deployment_branch: {0}' -f $env:deployment_branch
+$host.UI.WriteLine('$env:deployment_branch: {0}' -f $env:deployment_branch)
 $host.UI.WriteLine('$env:SCM_COMMIT_ID: {0}' -f $env:SCM_COMMIT_ID)
 $host.UI.WriteLine('$env:gitBucketVersion: {0}' -f $env:gitBucketVersion)
 
