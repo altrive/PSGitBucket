@@ -44,7 +44,20 @@ $xml = [xml]@'
       <environmentVariables>
         <environmentVariable name="GITBUCKET_HOME" value="{{GITBUCKET_HOME}}" />
       </environmentVariables>
-  </httpPlatform>
+    </httpPlatform>
+    <rewrite>
+      <rules>
+        <rule name="Redirect HTTP to HTTPS" stopProcessing="true">
+          <match url="(.*)"/>
+          <conditions>
+            <add input="{HTTPS}" pattern="Off"/>
+            <add input="{REQUEST_METHOD}" pattern="^get$|^head$" />
+            <add input="{REQUEST_FILENAME}" matchType="IsFile" negate="true" />
+          </conditions>
+          <action url="https://{HTTP_HOST}/{R:1}" type="Redirect"/>
+        </rule>
+      </rules>
+    </rewrite>
   </system.webServer>
 </configuration>
 '@.Replace("{{GITBUCKET_HOME}}", (Join-Path $env:Home ".gitbucket"))
