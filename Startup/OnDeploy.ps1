@@ -16,6 +16,8 @@ $host.UI.WriteLine('$env:deployment_branch: {0}' -f $env:deployment_branch)
 
 $host.UI.WriteLine('$env:SCM_COMMIT_ID: {0}' -f $env:SCM_COMMIT_ID)
 
+$host.UI.WriteLine('$env:gitBucketVersion: {0}' -f $env:gitBucketVersion)
+
 #WellKnownEnvironmentVariables
 #https://github.com/projectkudu/kudu/blob/bb1e4bd69ccbd86268888aec88316f13f50b7108/Kudu.Core/Deployment/WellKnownEnvironmentVariables.cs
 
@@ -50,5 +52,6 @@ $xml = [xml]@'
 $xml.configuration."system.webServer".httpPlatform.processPath = "$env:JAVA_HOME\bin\java.exe"
 $xml.configuration."system.webServer".httpPlatform.arguments   = [Environment]::ExpandEnvironmentVariables("$env:AZURE_JETTY9_CMDLINE")
 
+Add-Type -AssemblyName System.Xml.Linq
 $xmlText = [System.Xml.Linq.XElement]::Parse($xml.OuterXml).ToString()
 Set-Content -Path "$env:WEBROOT_PATH\Web.config" -Value $xmlText -Encoding UTF8
