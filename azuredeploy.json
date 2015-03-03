@@ -30,10 +30,6 @@
             ],
             "defaultValue": "0"
         },
-        "someAppSetting": {
-            "type": "string",
-            "defaultValue": "Test App Setting Value"
-        },
         "repoUrl": {
             "type": "string"
         },
@@ -45,9 +41,9 @@
             "allowedValues": [
                 "2.7",
                 "2.8",
-                "2.9"
+                "3.0"
             ],
-            "defaultValue": "2.9"
+            "defaultValue": "3.0"
         }
     },
     "resources": [
@@ -89,8 +85,8 @@
                     "properties": {
                         "appSettings": [
                             {
-                                "name": "someAppSetting",
-                                "value": "[parameters('someAppSetting')]"
+                                "name": "gitBucketVersion",
+                                "value": "[parameters('gitBucketVersion')]"
                             }
                         ]
                     }
