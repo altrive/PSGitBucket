@@ -22,11 +22,11 @@ $env:CONTEXT_PATH = "/"
 $source = 'https://github.com/takezoe/gitbucket/releases/download/{0}/gitbucket.war' -f $env:gitBucketVersion
 
 #TODO: Check version
-if(!(Test-Path "$env:WEBROOT_PATH\webapps"))
+if(!(Test-Path "$env:WEBROOT_PATH\webapps\root.war"))
 {
     New-Item "$env:WEBROOT_PATH\webapps" -ItemType Directory -ErrorAction Ignore > $null
     $wc = New-Object System.Net.WebClient
-    $wc.DownloadFile($source, "$env:WEBROOT_PATH\webapps\gitbucket.war")
+    $wc.DownloadFile($source, "$env:WEBROOT_PATH\webapps\root.war")
     $wc.Dispose()
 }
 
